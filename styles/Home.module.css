@@ -80,6 +80,7 @@
 }
 
 .centered {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -89,6 +90,7 @@
 .currentImage{
   border: 2px solid white;
   cursor: pointer;
+  margin-top: 60px;
 }
 
 .picture {

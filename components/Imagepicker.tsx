@@ -52,9 +52,7 @@ const ImagePicker: React.FC = () => {
           <img className={styles.picture} key={i} src={image} onClick={() => handleImageSelection(image)} />
         ))}
       </div>
-      <div className={styles.currentImage}>
-        {currentImage && <img src={currentImage} />}
-      </div>
+      <div className={styles.currentImage}>{currentImage && <img src={currentImage} />}</div>
       <div className={styles.searchInput}>
         <input type="text" placeholder="Enter your name" onChange={handleUserName} className={styles.inputbox} />
         <button onClick={handleDownload}>Download</button>

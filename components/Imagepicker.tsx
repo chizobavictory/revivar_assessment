@@ -68,7 +68,7 @@ const ImagePicker: React.FC = () => {
           <img crossOrigin="anonymous" className={styles.picture} key={i} src={image} onClick={() => handleImageSelection(image)} />
         ))}
       </div>
-      <div className={styles.currentImage}>
+      <div className={`${styles.currentImage} ${styles.aspectRatio}`}>
         <canvas ref={canvasRef} width={400} height={500} />
       </div>
       <div className={styles.searchInput}>

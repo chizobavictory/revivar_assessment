@@ -31,18 +31,19 @@ const ImagePicker: React.FC = () => {
     const img = new Image();
     img.src = image;
     img.onload = () => {
-    canvas.width = img.naturalWidth;
-    canvas.height = img.naturalHeight;
-    ctx.drawImage(img, 0, 0);
-    ctx.textAlign = "center";
-    ctx.textBaseline = "top";
-    ctx.font = "40px sans-serif";
-    ctx.fillStyle = "white";
-    ctx.fillText("Thank You", canvas.width / 2, canvas.height / 4);
-    ctx.textBaseline = "bottom";
-    ctx.fillText(userName, canvas.width / 2, (canvas.height / 4) * 3);
+      if (!canvas) return;
+      canvas.width = img.naturalWidth;
+      canvas.height = img.naturalHeight;
+      ctx.drawImage(img, 0, 0);
+      ctx.textAlign = "center";
+      ctx.textBaseline = "top";
+      ctx.font = "40px sans-serif";
+      ctx.fillStyle = "white";
+      ctx.fillText("Thank You", canvas.width / 2, canvas.height / 4);
+      ctx.textBaseline = "bottom";
+      ctx.fillText(userName, canvas.width / 2, (canvas.height / 4) * 3);
     };
-    };
+  };
 
   const handleUserName = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserName(event.target.value);

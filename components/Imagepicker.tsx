@@ -49,7 +49,7 @@ const ImagePicker: React.FC = () => {
     <div className={styles.imagepicker}>
       <div className={styles.centered}>
         {images.map((image, i) => (
-          <img className={styles.picture} key={i} src={image} onClick={() => handleImageSelection(image)} />
+          <img className={`${styles.picture} picture`}key={i} src={image} onClick={() => handleImageSelection(image)} />
         ))}
       </div>
       <div className={styles.currentImage}>{currentImage && <img src={currentImage} />}</div>

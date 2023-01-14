@@ -98,6 +98,11 @@
   cursor: pointer;
 }
 
+.picture:hover {
+  filter: brightness(50%);
+}
+
+
 .textTop {
   position: absolute;
   top: 0;

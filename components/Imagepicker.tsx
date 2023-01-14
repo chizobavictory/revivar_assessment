@@ -33,7 +33,7 @@ const ImagePicker: React.FC = () => {
     img.onload = () => {
       ctx.drawImage(img, 0, 0);
       ctx.font = "32px sans-serif";
-      ctx.fillStyle = "black";
+      ctx.fillStyle = "white";
       ctx.fillText("Thank You", 10, 40);
       ctx.fillText(userName, 10, 80);
     };
@@ -43,14 +43,14 @@ const ImagePicker: React.FC = () => {
     setUserName(event.target.value);
   };
 
-  const handleDownload = () => {
+  const handleDownload = async () => {
     if (!selectedImage || !userName) {
       return;
     }
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    const response = await axios.get(selectedImage, { responseType: "blob" });
+    const url = window.URL.createObjectURL(new Blob([response.data]));
     const link = document.createElement("a");
-    link.href = canvas.toDataURL("image/jpeg");
+    link.href = url;
     link.setAttribute("download", `${userName}.jpeg`);
     document.body.appendChild(link);
     link.click();
@@ -60,7 +60,7 @@ const ImagePicker: React.FC = () => {
     <div className={styles.imagepicker}>
       <div className={styles.centered}>
         {images.map((image, i) => (
-          <img className={styles.picture} key={i} src={image} onClick={() => handleImageSelection(image)} />
+          <img crossOrigin="anonymous" className={styles.picture} key={i} src={image} onClick={() => handleImageSelection(image)} />
         ))}
       </div>
       <div className={styles.currentImage}>
@@ -73,5 +73,4 @@ const ImagePicker: React.FC = () => {
     </div>
   );
 };
-
 export default ImagePicker;
